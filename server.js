@@ -2,10 +2,19 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const routes = {
+  '/tools': '/tools/index.html',
+  '/tools/refund-estimator': '/tools/refund-estimator.html',
+  '/tools/gig-deduction-finder': '/tools/gig-deduction-finder.html',
+  '/tools/do-i-need-to-file': '/tools/do-i-need-to-file.html',
+  '/tools/ready-to-file-checklist': '/tools/ready-to-file-checklist.html'
+};
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
-  if (p === '/') p = '/index.html';
+  if (p.length > 1 && p.endsWith('/')) p = p.slice(0, -1);
+  if (routes[p]) p = routes[p];
+  else if (p === '/') p = '/index.html';
   const file = path.join(root, p);
   if (!file.startsWith(root)) { res.writeHead(403); return res.end(); }
   fs.readFile(file, (err, data) => {

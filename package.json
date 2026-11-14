@@ -1,1 +1,1 @@
-{"description":"Lexurious Taxes — Less Taxes, More Returns. Marketing + client intake site for Alexis (Lex B).","engines":{"node":">=18"},"main":"server.js","name":"lextax-co","scripts":{"start":"node server.js"},"version":"1.0.0"}
+{"description":"Lexurious Taxes — Less Taxes, More Returns. Marketing + client intake site for Alexis Bryant.","engines":{"node":">=18"},"main":"server.js","name":"lextax-co","scripts":{"start":"node server.js"},"version":"1.0.0"}
