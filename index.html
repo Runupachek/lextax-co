@@ -143,13 +143,13 @@
     <h2>The Full Suite</h2>
     <p class="lede">One preparer, every filing need — for individuals, the self-employed, and small businesses.</p>
     <div class="cards">
-      <div class="card"><h3>Tax Preparation &amp; Filing</h3><p>Clean, on-time filing — done right the first time.</p></div>
-      <div class="card"><h3>Self-Employed &amp; Small Business</h3><p>Built for 1099s, gig work, and growing businesses.</p></div>
-      <div class="card"><h3>Business Tax Services</h3><p>Year-round support for the business behind the return.</p></div>
-      <div class="card"><h3>Financial Planning</h3><p>Turn this year&rsquo;s return into long-term stability.</p></div>
-      <div class="card"><h3>Maximize Deductions &amp; Credits</h3><p>Proper deductions, properly claimed.</p></div>
-      <div class="card"><h3>Tax Amendments</h3><p>Fix a past return and get what you were owed.</p></div>
-      <div class="card"><h3>IRS Assistance</h3><p>Help when the IRS comes calling.</p></div>
+      <div class="card"><h3>Tax Preparation &amp; Filing</h3><p>Clean, on-time filing — done right the first time.</p><p><button class="btn service-book" type="button" data-service="Tax Preparation &amp; Filing">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Self-Employed &amp; Small Business</h3><p>Built for 1099s, gig work, and growing businesses.</p><p><button class="btn service-book" type="button" data-service="Self-Employed &amp; Small Business">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Business Tax Services</h3><p>Year-round support for the business behind the return.</p><p><button class="btn service-book" type="button" data-service="Business Tax Services">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Financial Planning</h3><p>Turn this year&rsquo;s return into long-term stability.</p><p><button class="btn service-book" type="button" data-service="Financial Planning">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Maximize Deductions &amp; Credits</h3><p>Proper deductions, properly claimed.</p><p><button class="btn service-book" type="button" data-service="Tax Preparation &amp; Filing" data-note="Maximize deductions and credits — please check what I can claim.">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Tax Amendments</h3><p>Fix a past return and get what you were owed.</p><p><button class="btn service-book" type="button" data-service="Tax Amendments">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>IRS Assistance</h3><p>Help when the IRS comes calling.</p><p><button class="btn service-book" type="button" data-service="IRS Assistance">Select Service &amp; Book</button></p></div>
     </div>
   </div>
 </section>
@@ -362,7 +362,21 @@
   </div>
 </section>
 
-<footer><p class="follow">Follow us on <a href="https://www.instagram.com/lexurious_taxes">Instagram @lexurious_taxes</a> · Facebook @lexurious_taxes · TikTok @lexurious_taxes · YouTube @lexurious_taxes</p>© 2026 Lexurious Taxes — Legacy Tax &amp; Financial Services · Less Taxes, More Returns in 2027.</footer>
+<footer><p class="follow">Follow us on <a href="https://www.instagram.com/lexurious_taxes">Instagram @lexurious_taxes</a> · Facebook @lexurious_taxes · TikTok @lexurious_taxes · YouTube @lexurious_taxes</p>© 2026 Lexurious Taxes — Legacy Tax &amp; Financial Services · Less Taxes, More Returns in 2027.<br><button class="pipeline-open" type="button" id="pipeline-open">Lead Pipeline (Admin)</button></footer>
+
+<aside id="pipeline-drawer" aria-hidden="true" aria-label="Lead Pipeline">
+  <div class="pipeline-head">
+    <h3>Lead Pipeline</h3>
+    <button type="button" id="pipeline-close" aria-label="Close lead pipeline">&times;</button>
+  </div>
+  <p class="note" id="pipeline-count">0 leads</p>
+  <div id="pipeline-list"></div>
+  <p>
+    <button class="btn" type="button" id="pipeline-export">Export CSV</button>
+    <button class="btn ghost pipeline-clear" type="button" id="pipeline-clear">Clear</button>
+  </p>
+  <p class="note">Leads are saved on this device only. Alexis follows up from her email — nothing here sends anything.</p>
+</aside>
 
 <script>
 var items=["Current Address","Phone Number","Social Security Card","Valid DL or ID","Direct Deposit Info","Income Documents","I.D. ME Credentials","Business Receipts","1098T (if applicable)","Unemployment Documents","Proof of Residence","Dependent(s) Birth Certificate","IP PIN (if applicable)"];
@@ -381,10 +395,12 @@ items.forEach(function(it){
 document.getElementById('onboard').addEventListener('submit',function(e){
   e.preventDefault();
   var g=function(id){return document.getElementById(id).value.trim()};
+  try{if(window.LeadPipeline)window.LeadPipeline.savePipelineLead({source:'Become a Client',name:g('name'),phone:g('phone'),email:g('email'),service:g('service'),details:'Filing as: '+g('type')+'; Preferred contact: '+g('contact')+'; Best time: '+g('time')+'; Message: '+g('msg')});}catch(e){}
   var body='New client from lextax.co\n\nName: '+g('name')+'\nPhone: '+g('phone')+'\nEmail: '+g('email')+'\nService: '+g('service')+'\nFiling as: '+g('type')+'\nPreferred contact: '+g('contact')+'\nBest time: '+g('time')+'\nMessage: '+g('msg');
   window.location.href='mailto:alexis@luxurytaxandaccounting.com?subject='+encodeURIComponent('New client lead from lextax.co — '+g('name'))+'&body='+encodeURIComponent(body);
 });
 </script>
+  <script src="/assets/lead-pipeline.js"></script>
   <script src="/assets/tools.js"></script>
 </body>
 </html>
