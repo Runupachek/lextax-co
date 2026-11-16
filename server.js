@@ -2,8 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
-const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.mp3': 'audio/mpeg' };
 const routes = {
+  '/gig-workers': '/gig-workers.html',
   '/tools': '/tools/index.html',
   '/tools/refund-estimator': '/tools/refund-estimator.html',
   '/tools/gig-deduction-finder': '/tools/gig-deduction-finder.html',
