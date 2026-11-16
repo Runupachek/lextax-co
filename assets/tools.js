@@ -69,6 +69,7 @@ function sendLead(tool,prefix){
   if(!name||!phone||!email){alert('Please add your name, phone, and email so Alexis can reach you.');return false;}
   var summary=__summaries[tool]||'';
   try{var leads=JSON.parse(localStorage.getItem('lextax_leads')||'[]');leads.push({tool:tool,name:name,phone:phone,email:email,at:new Date().toISOString()});localStorage.setItem('lextax_leads',JSON.stringify(leads));}catch(e){}
+  try{if(window.LeadPipeline)window.LeadPipeline.savePipelineLead({source:tool,name:name,phone:phone,email:email,service:tool,details:summary});}catch(e){}
   window.location.href=buildLeadMailto(tool,name,phone,email,summary);
   var sent=document.getElementById(prefix+'-sent');if(sent)sent.style.display='block';
   return true;
