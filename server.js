@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
-const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml' };
+const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webp': 'image/webp' };
 const routes = {
   '/tools': '/tools/index.html',
   '/tools/refund-estimator': '/tools/refund-estimator.html',
@@ -10,16 +10,28 @@ const routes = {
   '/tools/do-i-need-to-file': '/tools/do-i-need-to-file.html',
   '/tools/ready-to-file-checklist': '/tools/ready-to-file-checklist.html'
 };
+// Only public site files are served: root pages, /assets/*, /tools/*.
+// Everything else (server.js, package.json, Dockerfile, .git, design/) 404s.
+const rootFiles = new Set(['/index.html', '/sitemap.xml', '/robots.txt', '/404.html']);
+function send404(res) {
+  fs.readFile(path.join(root, '404.html'), (err, data) => {
+    res.writeHead(404, { 'Content-Type': 'text/html' });
+    res.end(err ? 'Not found' : data);
+  });
+}
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (p.length > 1 && p.endsWith('/')) p = p.slice(0, -1);
   if (routes[p]) p = routes[p];
   else if (p === '/') p = '/index.html';
+  const allowed = rootFiles.has(p) || p.startsWith('/assets/') || p.startsWith('/tools/');
   const file = path.join(root, p);
-  if (!file.startsWith(root)) { res.writeHead(403); return res.end(); }
+  if (!allowed || !file.startsWith(root) || !types[path.extname(file)]) {
+    return send404(res);
+  }
   fs.readFile(file, (err, data) => {
-    if (err) { res.writeHead(404); return res.end('Not found'); }
-    res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
+    if (err) { return send404(res); }
+    res.writeHead(200, { 'Content-Type': types[path.extname(file)] });
     res.end(data);
   });
 });
