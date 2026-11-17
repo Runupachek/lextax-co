@@ -1,3 +1,5 @@
+> SUPERSEDED 2026-11-17 — Boss's voice ruling: the "gig worker" framing is OUT. These are entrepreneurs and business people, never gig workers. The tool is renamed Business Deduction Finder (old URL /tools/gig-deduction-finder now 301-redirects). This draft's audience/labeling guidance no longer stands; the page is to be reworked on the entrepreneur / procurement doctrine in the Alexis Bible (LEXIS-BIBLE-2026-11-17.md).
+
 # Lex Site — Gig Workers Page Design (DRAFT for Boss's lock)
 
 **Status:** DRAFT — nothing here is locked copy. Boss rules it before any build.

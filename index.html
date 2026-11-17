@@ -4,11 +4,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lexurious Taxes — Less Taxes, More Returns in 2027 | Alexis Bryant | Atlanta Tax Preparation</title>
-<meta name="description" content="Atlanta tax preparation with Alexis Bryant — tax filing in Atlanta for individuals, self-employed, and small businesses. Free refund estimator, gig-worker deduction finder, and filing checklist. Less Taxes, More Returns in 2027.">
+<meta name="description" content="Atlanta tax preparation with Alexis Bryant — tax filing in Atlanta for individuals, self-employed, and small businesses. Free refund estimator, business deduction finder, and filing checklist. Less Taxes, More Returns in 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<style>
+/* Inlined from assets/style.css — source of truth; run node check-inline.js to verify. */
+:root{--green:#0b3d2e;--green2:#0e4d3a;--gold:#c9a227;--gold2:#e8c766;--cream:#f7f3ea;--ink:#14231c;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+h1,h2,h3{font-family:"Playfair Display",serif;color:var(--green)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--green);color:#fff;text-align:center;padding:10px 16px;font-weight:600;font-size:15px}
+.topbar a{color:var(--gold2);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--green),#072a1f);color:#fff;padding:56px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{color:var(--gold2);font-size:clamp(40px,6vw,64px);line-height:1.05;margin:14px 0 10px}
+.hero .tag{color:var(--gold2);letter-spacing:.18em;text-transform:uppercase;font-size:13px;font-weight:700}
+.hero p{font-size:18px;opacity:.92;max-width:520px}
+.hero img{width:100%;max-width:460px;border-radius:14px;border:4px solid var(--gold);display:block;margin:0 auto;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.btn{display:inline-block;background:var(--gold);color:#1c2b22;font-weight:700;padding:14px 26px;border-radius:999px;text-decoration:none;margin:18px 10px 0 0;font-size:16px}
+.btn.ghost{background:transparent;color:#fff;border:2px solid var(--gold2)}
+section{padding:56px 0}
+section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
+.lede{font-size:18px;max-width:640px;margin-bottom:28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #e5dcc4;border-radius:14px;padding:22px}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p{font-size:15px}
+.flyer{width:100%;max-width:520px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){.hero-grid,.split{grid-template-columns:1fr}}
+.checklist{background:#fff;border:1px solid #e5dcc4;border-radius:16px;padding:28px;max-width:760px}
+.bar{height:10px;background:#eee;border-radius:99px;overflow:hidden;margin:10px 0 20px}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+.check-item{display:flex;gap:12px;align-items:center;padding:11px 6px;border-bottom:1px solid #f0ead6;font-size:17px;cursor:pointer}
+.check-item:last-child{border-bottom:0}
+.check-item input{width:22px;height:22px;accent-color:var(--green)}
+.check-item.done span{text-decoration:line-through;opacity:.55}
+form{background:#fff;border:1px solid #e5dcc4;border-radius:16px;padding:28px;max-width:760px}
+label{display:block;font-weight:600;margin:14px 0 5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbbf9a;border-radius:10px;font:inherit}
+textarea{min-height:90px}
+.note{font-size:13px;opacity:.75;margin-top:12px}
+.contact{background:var(--green);color:#fff}
+.contact h2{color:var(--gold2)}
+.contact a{color:var(--gold2)}
+footer{background:#072a1f;color:#cfe3d8;text-align:center;padding:26px 16px;font-size:14px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.tool{background:#fff;border:1px solid #e5dcc4;border-radius:16px;padding:24px}
+.tool h3{font-size:22px;margin-bottom:4px}
+.tool .t-lede{font-size:15px;margin-bottom:6px}
+.tool label{margin:10px 0 4px}
+.result{display:none;background:#f7f3ea;border:1px solid var(--gold);border-radius:12px;padding:16px;margin-top:16px}
+.result.show{display:block}
+.result .big{font-size:26px;font-weight:700;color:var(--green);font-family:"Playfair Display",serif;line-height:1.2}
+.result ul{margin:8px 0 4px 20px;font-size:15px}
+.capture{display:none;margin-top:14px;border-top:1px dashed #cbbf9a;padding-top:14px}
+.capture.show{display:block}
+.disclaimer{font-size:13px;opacity:.75;margin-top:10px}
+
+.service-book{font-size:14px;padding:10px 18px;margin:12px 0 0}
+.pop-line{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;color:var(--green);line-height:1.25;margin-bottom:6px}
+.pipeline-open{background:none;border:0;color:var(--gold2);cursor:pointer;font:inherit;font-size:13px;text-decoration:underline;margin-top:10px}
+#pipeline-drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:#fff;border-left:1px solid #e5dcc4;box-shadow:-12px 0 32px rgba(0,0,0,.25);padding:24px;overflow-y:auto;transform:translateX(105%);transition:transform .25s ease;z-index:50}
+#pipeline-drawer.open{transform:translateX(0)}
+.pipeline-head{display:flex;justify-content:space-between;align-items:center}
+.pipeline-head h3{margin:0}
+#pipeline-close{background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:var(--green)}
+#pipeline-count{margin:8px 0 16px}
+.pipeline-lead{border:1px solid #e5dcc4;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:15px}
+.pipeline-lead .note{margin-top:0}
+.pipeline-clear{color:var(--green);border-color:var(--green)}
+
+.follow{font-size:14px;margin-top:12px}
+.follow a{color:var(--green);font-weight:600}
+footer .follow a,.contact .follow a{color:var(--gold2)}
+
+</style>
 
 <link rel="canonical" href="https://lextax.co/">
 <meta property="og:type" content="website">
@@ -21,7 +95,7 @@
 <meta property="og:image:height" content="1152">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lexurious Taxes — Less Taxes, More Returns in 2027 | Alexis Bryant">
-<meta name="twitter:description" content="Atlanta tax preparation with Alexis Bryant. Free refund estimator, gig-worker deduction finder, and filing checklist.">
+<meta name="twitter:description" content="Atlanta tax preparation with Alexis Bryant. Free refund estimator, business deduction finder, and filing checklist.">
 <meta name="twitter:image" content="https://lextax.co/assets/share-tax.jpg">
 <meta name="twitter:image:alt" content="Less Taxes, More Returns in 2027 — Lexurious Taxes, Atlanta tax preparation">
 <script type="application/ld+json">
@@ -105,7 +179,7 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Gig Worker Taxes"
+          "name": "Business Owner Taxes"
         }
       },
       {
@@ -162,14 +236,22 @@
     <h2>The Full Suite</h2>
     <p class="lede">One preparer, every filing need — for individuals, the self-employed, and small businesses.</p>
     <div class="cards">
-      <div class="card"><h3>Tax Preparation &amp; Filing</h3><p>Clean, on-time filing — done right the first time.</p><p><button class="btn service-book" type="button" data-service="Tax Preparation &amp; Filing">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>Self-Employed &amp; Small Business</h3><p>Built for 1099s, gig work, and growing businesses.</p><p><button class="btn service-book" type="button" data-service="Self-Employed &amp; Small Business">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>Business Tax Services</h3><p>Year-round support for the business behind the return.</p><p><button class="btn service-book" type="button" data-service="Business Tax Services">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>Financial Planning</h3><p>Turn this year&rsquo;s return into long-term stability.</p><p><button class="btn service-book" type="button" data-service="Financial Planning">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>Maximize Deductions &amp; Credits</h3><p>Proper deductions, properly claimed.</p><p><button class="btn service-book" type="button" data-service="Tax Preparation &amp; Filing" data-note="Maximize deductions and credits — please check what I can claim.">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>Tax Amendments</h3><p>Fix a past return and get what you were owed.</p><p><button class="btn service-book" type="button" data-service="Tax Amendments">Select Service &amp; Book</button></p></div>
-      <div class="card"><h3>IRS Assistance</h3><p>Help when the IRS comes calling.</p><p><button class="btn service-book" type="button" data-service="IRS Assistance">Select Service &amp; Book</button></p></div>
+      <div class="card"><h3>Tax Preparation &amp; Filing</h3><p class="pop-line">Clean, on-time filing — done right the first time.</p><p><a class="btn service-book" href="#start" data-service="Tax Preparation &amp; Filing">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>Self-Employed &amp; Small Business</h3><p>Built for 1099s, entrepreneurs, and growing businesses — for people balancing different income streams, the way business owners do.</p><p><a class="btn service-book" href="#start" data-service="Self-Employed &amp; Small Business">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>Business Tax Services</h3><p>Year-round support for the business behind the return.</p><p><a class="btn service-book" href="#start" data-service="Business Tax Services">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>Financial Planning</h3><p>Turn this year&rsquo;s return into long-term stability.</p><p><a class="btn service-book" href="#start" data-service="Financial Planning">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>Maximize Deductions &amp; Credits</h3><p>Proper deductions, properly claimed.</p><p><a class="btn service-book" href="#start" data-service="Tax Preparation &amp; Filing" data-note="Maximize deductions and credits — please check what I can claim.">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>Tax Amendments</h3><p>Fix a past return and get what you were owed.</p><p><a class="btn service-book" href="#start" data-service="Tax Amendments">Select Service &amp; Book</a></p></div>
+      <div class="card"><h3>IRS Assistance</h3><p>Help when the IRS comes calling.</p><p><a class="btn service-book" href="#start" data-service="IRS Assistance">Select Service &amp; Book</a></p></div>
     </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap">
+    <h2>You&rsquo;re Not a Gig. You&rsquo;re a Business Owner.</h2>
+    <p class="lede">Uber, DoorDash, freelance — that&rsquo;s the mechanism, not the destination. It&rsquo;s your stepping stone toward something greater. And it&rsquo;s not what you do, it&rsquo;s how you do it: balancing different income streams the way other business owners don&rsquo;t.</p>
+    <p class="lede">That takes a business owner&rsquo;s frame of mind from go. A gig worker leaves money on the table. A business owner procures all of it. Every stream ends the same way — taxable income — and Alexis makes sure you keep all of yours.</p>
   </div>
 </section>
 
@@ -178,7 +260,7 @@
     <img class="flyer" src="assets/flyer-legacy.jpg" alt="Legacy Tax and Financial Services — turn today's taxes into tomorrow's wealth" width="945" height="1080">
     <div>
       <h2>Now Accepting New Clients</h2>
-      <p class="lede">Don&rsquo;t wait until next month. Reach out now — and don&rsquo;t miss out on a big return with Alexis.</p>
+      <p class="lede">Reach out now and don&rsquo;t miss out on your maximum return with Alexis.</p>
       <p><strong>Maximize your refund.</strong><br>Minimize your tax liability.<br>Year-round tax support.</p>
       <a class="btn" href="#start">Book Your Tax Appointment</a>
     </div>
@@ -222,15 +304,15 @@
         <p class="disclaimer">This is a rough estimate only — not tax advice, and not a promise of any refund. Your real result depends on your full return. Alexis gives you the real answer.</p>
       </div>
 
-      <div class="tool" id="tool-gig">
-        <h3>Gig-Worker Deduction Finder</h3>
-        <p class="t-lede">Lyft, Uber, DoorDash, shop work — find the deductions you may be missing.</p>
-        <label for="gg-type">Your gig work</label>
+      <div class="tool" id="tool-biz">
+        <h3>Business Deduction Finder</h3>
+        <p class="t-lede">Rideshare, delivery, freelance, shop work — you&rsquo;re a business owner, and business owners miss deductions every year. Find yours in a minute.</p>
+        <label for="gg-type">Your business work</label>
         <select id="gg-type">
           <option>Rideshare — Lyft / Uber</option>
           <option>Delivery — DoorDash / Uber Eats / etc.</option>
           <option>Shop / retail work</option>
-          <option>Other gig work</option>
+          <option>Other business work</option>
         </select>
         <label for="gg-miles">Business miles driven this year</label>
         <input id="gg-miles" type="number" min="0" step="10" placeholder="e.g. 12000">
@@ -419,7 +501,333 @@ document.getElementById('onboard').addEventListener('submit',function(e){
   window.location.href='mailto:alexis@luxurytaxandaccounting.com?subject='+encodeURIComponent('New client lead from lextax.co — '+g('name'))+'&body='+encodeURIComponent(body);
 });
 </script>
-  <script src="/assets/lead-pipeline.js"></script>
-  <script src="/assets/tools.js"></script>
+  <script>
+/* Inlined from assets/lead-pipeline.js — source of truth; run node check-inline.js to verify. */
+/* ---- lextax.co Admin Lead Pipeline (Gemini blend) ----
+   Client-side only, exactly like the Gemini Canvas piece it blends in:
+   leads are saved in localStorage under `legacy_tax_leads`, listed
+   newest-first in the drawer, exportable as CSV, and clearable.
+   No server endpoint, no new delivery path — the mail-app handoff
+   to Alexis is unchanged. Older captures saved under `lextax_leads`
+   are shown too, normalised to the same shape, with no duplicates.
+   Capture asks only for name, phone, email — never SSN, ID, IP PIN,
+   or bank details. */
+(function(){
+  var KEY='legacy_tax_leads';
+  var LEGACY_KEY='lextax_leads';
+
+  function read(key){
+    try{var v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[];}
+    catch(e){return [];}
+  }
+  function write(key,rows){
+    try{localStorage.setItem(key,JSON.stringify(rows));}catch(e){}
+  }
+  function uid(){
+    return 'lead-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
+  }
+  function clean(s){return (s==null?'':String(s)).trim();}
+  function savePipelineLead(lead){
+    if(!lead)return null;
+    var row={
+      id:uid(),
+      timestamp:new Date().toISOString(),
+      source:clean(lead.source)||'Website',
+      name:clean(lead.name),
+      phone:clean(lead.phone),
+      email:clean(lead.email),
+      service:clean(lead.service)||clean(lead.source)||'',
+      details:clean(lead.details)
+    };
+    if(!row.name||!row.phone||!row.email)return null;
+    var rows=read(KEY);
+    rows.push(row);
+    write(KEY,rows);
+    return row;
+  }
+  /* Normalise an older lextax_leads capture ({tool,name,phone,email,at})
+     into pipeline shape. */
+  function normaliseLegacy(row,i){
+    return {
+      id:'legacy-'+i,
+      timestamp:row.at||'',
+      source:row.tool||'Website',
+      name:clean(row.name),
+      phone:clean(row.phone),
+      email:clean(row.email),
+      service:row.tool||'',
+      details:''
+    };
+  }
+  function getPipelineLeads(){
+    var rows=read(KEY).slice();
+    var seen={};
+    rows.forEach(function(r){seen[[r.name,r.phone,r.email,r.timestamp].join('|')]=1;});
+    read(LEGACY_KEY).forEach(function(old,i){
+      var n=normaliseLegacy(old,i);
+      var k=[n.name,n.phone,n.email,n.timestamp].join('|');
+      if(!seen[k]){seen[k]=1;rows.push(n);}
+    });
+    rows.sort(function(a,b){
+      var ta=Date.parse(a.timestamp||'')||0;
+      var tb=Date.parse(b.timestamp||'')||0;
+      return tb-ta;
+    });
+    return rows;
+  }
+  function csvEscape(v){
+    v=v==null?'':String(v);
+    if(/[",\n\r]/.test(v))return '"'+v.replace(/"/g,'""')+'"';
+    return v;
+  }
+  function buildCsv(leads){
+    var cols=['ID','Timestamp','Source','Name','Phone','Email','Service','Details'];
+    var lines=[cols.join(',')];
+    (leads||[]).forEach(function(r){
+      lines.push([r.id,r.timestamp,r.source,r.name,r.phone,r.email,r.service,r.details].map(csvEscape).join(','));
+    });
+    return lines.join('\r\n');
+  }
+  function exportCsv(){
+    var leads=getPipelineLeads();
+    var blob=new Blob([buildCsv(leads)],{type:'text/csv;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='lextax-leads.csv';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+  }
+  function clearPipeline(){
+    if(!window.confirm('Clear all leads in the pipeline? This cannot be undone.'))return false;
+    try{localStorage.removeItem(KEY);}catch(e){}
+    try{localStorage.removeItem(LEGACY_KEY);}catch(e){}
+    renderDrawer();
+    return true;
+  }
+  function escHtml(s){
+    return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function renderDrawer(){
+    var list=document.getElementById('pipeline-list');
+    var count=document.getElementById('pipeline-count');
+    if(!list)return;
+    var leads=getPipelineLeads();
+    if(count)count.textContent=leads.length+' lead'+(leads.length===1?'':'s');
+    if(!leads.length){
+      list.innerHTML='<p class="note">No leads yet. When a visitor uses a tool or the Become a Client form, their name, phone, and email land here.</p>';
+      return;
+    }
+    list.innerHTML=leads.map(function(r){
+      var when=r.timestamp?new Date(r.timestamp).toLocaleString('en-US'):'';
+      return '<div class="pipeline-lead"><strong>'+escHtml(r.name)+'</strong> <span class="note">'+escHtml(when)+'</span><br>'+
+        '<span>'+escHtml(r.phone)+' · '+escHtml(r.email)+'</span><br>'+
+        '<span class="note">Source: '+escHtml(r.source)+(r.service&&r.service!==r.source?' · Service: '+escHtml(r.service):'')+'</span>'+
+        (r.details?'<br><span class="note">'+escHtml(r.details)+'</span>':'')+'</div>';
+    }).join('');
+  }
+  function openDrawer(){
+    var d=document.getElementById('pipeline-drawer');
+    if(!d)return;
+    renderDrawer();
+    d.classList.add('open');
+    d.setAttribute('aria-hidden','false');
+  }
+  function closeDrawer(){
+    var d=document.getElementById('pipeline-drawer');
+    if(!d)return;
+    d.classList.remove('open');
+    d.setAttribute('aria-hidden','true');
+  }
+  function on(id,fn){var el=document.getElementById(id);if(el)el.addEventListener('click',fn);}
+
+  on('pipeline-open',openDrawer);
+  on('pipeline-close',closeDrawer);
+  on('pipeline-export',exportCsv);
+  on('pipeline-clear',clearPipeline);
+
+  /* Service-card "Select Service & Book": pre-fill the Become a Client
+     form, scroll to it, and focus the name field. */
+  Array.prototype.forEach.call(document.querySelectorAll('.service-book'),function(btn){
+    btn.addEventListener('click',function(e){ if(e)e.preventDefault();
+      var service=btn.getAttribute('data-service')||'';
+      var note=btn.getAttribute('data-note')||'';
+      var sel=document.getElementById('service');
+      if(sel&&service){
+        var found=false;
+        for(var i=0;i<sel.options.length;i++){
+          if(sel.options[i].value===service||sel.options[i].text===service){sel.selectedIndex=i;found=true;break;}
+        }
+        if(!found&&sel.options.length)sel.selectedIndex=0;
+      }
+      var msg=document.getElementById('msg');
+      if(msg)msg.value=note||'';
+      var start=document.getElementById('start');
+      if(start)start.scrollIntoView({behavior:'smooth'});
+      var name=document.getElementById('name');
+      if(name)setTimeout(function(){name.focus();},400);
+    });
+  });
+
+  window.LeadPipeline={
+    savePipelineLead:savePipelineLead,
+    getPipelineLeads:getPipelineLeads,
+    buildCsv:buildCsv,
+    exportCsv:exportCsv,
+    clearPipeline:clearPipeline,
+    renderDrawer:renderDrawer
+  };
+})();
+
+</script>
+  <script>
+/* Inlined from assets/tools.js — source of truth; run node check-inline.js to verify. */
+/* ---- lextax.co free tax tools ----
+   Pure calculation functions are on window for testability.
+   All results are estimates/guidance only — never tax advice,
+   never a guaranteed refund. Lead capture asks only for
+   name, phone, email — never SSN, ID, IP PIN, or bank details. */
+function num(v){ v=parseFloat(v); return isFinite(v)?Math.max(0,v):0; }
+function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+
+var STD={single:15000,mfj:30000,mfs:15000,hoh:22500};
+var BRACKETS=[
+  {upto:11925,rate:.10},
+  {upto:48475,rate:.12},
+  {upto:103350,rate:.22},
+  {upto:197300,rate:.24},
+  {upto:250525,rate:.32},
+  {upto:626350,rate:.35},
+  {upto:Infinity,rate:.37}
+];
+function fedTax(status,taxable){
+  var mult=status==='mfj'?2:(status==='hoh'?1.5:1);
+  var tax=0,prev=0;
+  for(var i=0;i<BRACKETS.length;i++){
+    var cap=BRACKETS[i].upto*mult;
+    if(taxable<=prev)break;
+    var part=Math.min(taxable,cap)-prev;
+    if(part>0)tax+=part*BRACKETS[i].rate;
+    prev=cap;
+  }
+  return tax;
+}
+/* Rough 2025 federal estimate: standard deduction, brackets,
+   $2,000 child tax credit per child under 17 ($1,700 refundable cap). */
+function calcRefund(status,income,withheld,kids){
+  var taxable=Math.max(0,income-STD[status]);
+  var tax=fedTax(status,taxable);
+  var ctc=2000*kids;
+  var nonRef=Math.min(ctc,tax);
+  var refundable=Math.min(Math.max(0,ctc-tax),1700*kids);
+  var after=tax-nonRef;
+  var refund=withheld-after+refundable;
+  var pad=Math.max(250,Math.abs(refund)*0.10);
+  return {taxable:taxable,tax:after,refund:refund,low:refund-pad,high:refund+pad};
+}
+/* Business deductions: 2025 standard mileage $0.70/mi, phone at 50% business use. */
+function calcBiz(miles,phoneMo,supplies,other){
+  var mileage=miles*0.70;
+  var phone=phoneMo*12*0.5;
+  var total=mileage+phone+supplies+other;
+  return {mileage:mileage,phone:phone,supplies:supplies,other:other,total:total,saved:total*0.22};
+}
+var FILE_THRESH={single:15000,mfj:30000,mfs:5,hoh:22500};
+function calcMustFile(status,age,income,se){
+  var t=FILE_THRESH[status];
+  if(age>=65)t+=(status==='mfj'?1500:1950);
+  if(se>=400)return {must:true,reason:'You had $400 or more in self-employment income — the IRS requires a return at that level.'};
+  if(income>=t)return {must:true,reason:'Your income of '+money(income)+' is at or above the '+money(t)+' filing threshold for your status.'};
+  return {must:false,reason:'Your income is below the '+money(t)+' filing threshold for your status — but you may still be owed a refund from withheld tax or credits, so filing can still pay.'};
+}
+
+var FOLLOW='<p class="follow">Follow us on <a href="https://www.instagram.com/lexurious_taxes">Instagram @lexurious_taxes</a> · Facebook @lexurious_taxes · TikTok @lexurious_taxes · YouTube @lexurious_taxes</p>';
+var __summaries={};
+function buildLeadMailto(tool,name,phone,email,summary){
+  var body='New lead from lextax.co — '+tool+'\n\nName: '+name+'\nPhone: '+phone+'\nEmail: '+email+'\n\n'+summary+'\n\n(Please never send Social Security numbers, ID numbers, IP PINs, or bank details.)';
+  return 'mailto:alexis@luxurytaxandaccounting.com?subject='+encodeURIComponent('New client lead from lextax.co — '+tool+' — '+name)+'&body='+encodeURIComponent(body);
+}
+function sendLead(tool,prefix){
+  var g=function(id){var el=document.getElementById(prefix+'-'+id);return el?el.value.trim():''};
+  var name=g('name'),phone=g('phone'),email=g('email');
+  if(!name||!phone||!email){alert('Please add your name, phone, and email so Alexis can reach you.');return false;}
+  var summary=__summaries[tool]||'';
+  try{var leads=JSON.parse(localStorage.getItem('lextax_leads')||'[]');leads.push({tool:tool,name:name,phone:phone,email:email,at:new Date().toISOString()});localStorage.setItem('lextax_leads',JSON.stringify(leads));}catch(e){}
+  try{if(window.LeadPipeline)window.LeadPipeline.savePipelineLead({source:tool,name:name,phone:phone,email:email,service:tool,details:summary});}catch(e){}
+  window.location.href=buildLeadMailto(tool,name,phone,email,summary);
+  var sent=document.getElementById(prefix+'-sent');if(sent)sent.style.display='block';
+  return true;
+}
+function on(id,fn){var el=document.getElementById(id);if(el)el.addEventListener('click',fn);}
+
+on('rf-go',function(){
+  var st=document.getElementById('rf-status').value;
+  var inc=num(document.getElementById('rf-income').value);
+  var wh=num(document.getElementById('rf-with').value);
+  var kids=parseInt(document.getElementById('rf-kids').value||'0',10)||0;
+  var r=calcRefund(st,inc,wh,kids);
+  var el=document.getElementById('rf-result');if(!el)return;
+  var label=r.refund>=0?'estimated refund':'estimated amount owed';
+  el.innerHTML='<div class="big">'+money(Math.abs(r.low))+' – '+money(Math.abs(r.high))+'</div><p>Your '+label+' looks like it lands in this range, based on the numbers you entered.</p><p class="disclaimer">Estimate only — not tax advice, and not a promise of any refund. Alexis runs your real return and gives you the real answer.</p>';
+  el.innerHTML += FOLLOW;
+  el.classList.add('show');
+  var cap=document.getElementById('rf-capture');if(cap)cap.classList.add('show');
+  __summaries['Refund Estimator']='Refund Estimator — status: '+st+'; income: '+money(inc)+'; withheld: '+money(wh)+'; children under 17: '+kids+'; estimate range: '+money(r.low)+' to '+money(r.high)+'.';
+});
+on('rf-send',function(){sendLead('Refund Estimator','rf');});
+
+on('gg-go',function(){
+  var miles=num(document.getElementById('gg-miles').value);
+  var ph=num(document.getElementById('gg-phone').value);
+  var sup=num(document.getElementById('gg-supplies').value);
+  var oth=num(document.getElementById('gg-other').value);
+  var g=calcBiz(miles,ph,sup,oth);
+  var el=document.getElementById('gg-result');if(!el)return;
+  el.innerHTML='<div class="big">'+money(g.total)+' in deductions found</div><ul><li>Mileage: '+money(g.mileage)+' ('+Math.round(miles).toLocaleString('en-US')+' miles at $0.70)</li><li>Phone (business share): '+money(g.phone)+'</li><li>Supplies and gear: '+money(g.supplies)+'</li><li>Other business costs: '+money(g.other)+'</li></ul><p>At a rough combined rate, that could mean about <strong>'+money(g.saved)+' back in your pocket</strong> — before Alexis finds the rest.</p><p><strong>Often missed:</strong> home-office space, health insurance, retirement contributions, tolls and parking, and a mileage log. Bring your records and Alexis checks them all.</p><p class="disclaimer">Guidance only — not tax advice. Which deductions you can claim depends on your records. Alexis reviews your real books and tells you what\u2019s yours.</p>';
+  el.innerHTML += FOLLOW;
+  el.classList.add('show');
+  var cap=document.getElementById('gg-capture');if(cap)cap.classList.add('show');
+  __summaries['Business Deduction Finder']='Business Deduction Finder — miles: '+miles+'; phone $'+ph+'/mo; supplies: '+money(sup)+'; other: '+money(oth)+'; total deductions found: '+money(g.total)+'; rough tax saved: '+money(g.saved)+'.';
+});
+on('gg-send',function(){sendLead('Business Deduction Finder','gg');});
+
+on('fc-go',function(){
+  var st=document.getElementById('fc-status').value;
+  var age=parseInt(document.getElementById('fc-age').value||'0',10)||0;
+  var inc=num(document.getElementById('fc-income').value);
+  var se=num(document.getElementById('fc-se').value);
+  var r=calcMustFile(st,age,inc,se);
+  var el=document.getElementById('fc-result');if(!el)return;
+  el.innerHTML='<div class="big">'+(r.must?'Yes — you likely need to file.':'Probably not required — but check anyway.')+'</div><p>'+r.reason+'</p><p class="disclaimer">General guidance only — not tax advice. Filing rules have exceptions, and you may still be owed money even when filing isn\u2019t required. Alexis gives you the real answer.</p>';
+  el.innerHTML += FOLLOW;
+  el.classList.add('show');
+  var cap=document.getElementById('fc-capture');if(cap)cap.classList.add('show');
+  __summaries['Do I Need to File?']='Do I Need to File? — status: '+st+'; age: '+age+'; income: '+money(inc)+'; self-employment: '+money(se)+'; result: '+(r.must?'likely must file':'probably not required')+'.';
+});
+on('fc-send',function(){sendLead('Do I Need to File?','fc');});
+
+/* Ready-to-File checklist: booking prompt at 13/13 + lead capture. */
+(function(){
+  var list=document.getElementById('list');
+  if(!list)return;
+  list.addEventListener('change',function(){
+    var n=list.querySelectorAll('input:checked').length;
+    var p=document.getElementById('ready-prompt');
+    if(p&&n>=13)p.classList.add('show');
+    var done=[];
+    list.querySelectorAll('.check-item').forEach(function(it){
+      if(it.querySelector('input').checked)done.push(it.querySelector('span').textContent);
+    });
+    __summaries['Ready-to-File Checklist']='Ready-to-File Checklist — '+n+' of 13 gathered: '+done.join('; ')+'.';
+  });
+  on('ck-send',function(){sendLead('Ready-to-File Checklist','ck');});
+})();
+
+</script>
+<script>
+/* Image retry (2026-11-17): if an image fails on a slow connection, retry once with a cache-buster so a stalled download never leaves a broken image. */
+(function(){function retry(im){var s=im.getAttribute('src');if(!s||s.indexOf('retry=1')>-1)return;im.setAttribute('src',s+(s.indexOf('?')>-1?'&':'?')+'retry=1');}
+document.querySelectorAll('img').forEach(function(im){im.addEventListener('error',function(){setTimeout(function(){retry(im);},800);});if(im.complete&&im.naturalWidth===0){setTimeout(function(){retry(im);},800);}});})();
+</script>
 </body>
 </html>

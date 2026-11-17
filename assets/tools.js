@@ -41,8 +41,8 @@ function calcRefund(status,income,withheld,kids){
   var pad=Math.max(250,Math.abs(refund)*0.10);
   return {taxable:taxable,tax:after,refund:refund,low:refund-pad,high:refund+pad};
 }
-/* Gig deductions: 2025 standard mileage $0.70/mi, phone at 50% business use. */
-function calcGig(miles,phoneMo,supplies,other){
+/* Business deductions: 2025 standard mileage $0.70/mi, phone at 50% business use. */
+function calcBiz(miles,phoneMo,supplies,other){
   var mileage=miles*0.70;
   var phone=phoneMo*12*0.5;
   var total=mileage+phone+supplies+other;
@@ -97,15 +97,15 @@ on('gg-go',function(){
   var ph=num(document.getElementById('gg-phone').value);
   var sup=num(document.getElementById('gg-supplies').value);
   var oth=num(document.getElementById('gg-other').value);
-  var g=calcGig(miles,ph,sup,oth);
+  var g=calcBiz(miles,ph,sup,oth);
   var el=document.getElementById('gg-result');if(!el)return;
   el.innerHTML='<div class="big">'+money(g.total)+' in deductions found</div><ul><li>Mileage: '+money(g.mileage)+' ('+Math.round(miles).toLocaleString('en-US')+' miles at $0.70)</li><li>Phone (business share): '+money(g.phone)+'</li><li>Supplies and gear: '+money(g.supplies)+'</li><li>Other business costs: '+money(g.other)+'</li></ul><p>At a rough combined rate, that could mean about <strong>'+money(g.saved)+' back in your pocket</strong> — before Alexis finds the rest.</p><p><strong>Often missed:</strong> home-office space, health insurance, retirement contributions, tolls and parking, and a mileage log. Bring your records and Alexis checks them all.</p><p class="disclaimer">Guidance only — not tax advice. Which deductions you can claim depends on your records. Alexis reviews your real books and tells you what\u2019s yours.</p>';
   el.innerHTML += FOLLOW;
   el.classList.add('show');
   var cap=document.getElementById('gg-capture');if(cap)cap.classList.add('show');
-  __summaries['Gig-Worker Deduction Finder']='Gig-Worker Deduction Finder — miles: '+miles+'; phone $'+ph+'/mo; supplies: '+money(sup)+'; other: '+money(oth)+'; total deductions found: '+money(g.total)+'; rough tax saved: '+money(g.saved)+'.';
+  __summaries['Business Deduction Finder']='Business Deduction Finder — miles: '+miles+'; phone $'+ph+'/mo; supplies: '+money(sup)+'; other: '+money(oth)+'; total deductions found: '+money(g.total)+'; rough tax saved: '+money(g.saved)+'.';
 });
-on('gg-send',function(){sendLead('Gig-Worker Deduction Finder','gg');});
+on('gg-send',function(){sendLead('Business Deduction Finder','gg');});
 
 on('fc-go',function(){
   var st=document.getElementById('fc-status').value;

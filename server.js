@@ -3,10 +3,15 @@ const fs = require('fs');
 const path = require('path');
 const root = __dirname;
 const types = { '.html': 'text/html', '.xml': 'application/xml', '.txt': 'text/plain', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webp': 'image/webp' };
+const redirects = {
+  // Old tool URL keeps working: renamed 2026-11-17 by Boss's order
+  // (Gig Worker Deduction Finder -> Business Deduction Finder).
+  '/tools/gig-deduction-finder': '/tools/business-deduction-finder'
+};
 const routes = {
   '/tools': '/tools/index.html',
   '/tools/refund-estimator': '/tools/refund-estimator.html',
-  '/tools/gig-deduction-finder': '/tools/gig-deduction-finder.html',
+  '/tools/business-deduction-finder': '/tools/business-deduction-finder.html',
   '/tools/do-i-need-to-file': '/tools/do-i-need-to-file.html',
   '/tools/ready-to-file-checklist': '/tools/ready-to-file-checklist.html'
 };
@@ -22,6 +27,7 @@ function send404(res) {
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (p.length > 1 && p.endsWith('/')) p = p.slice(0, -1);
+  if (redirects[p]) { res.writeHead(301, { 'Location': redirects[p] }); return res.end(); }
   if (routes[p]) p = routes[p];
   else if (p === '/') p = '/index.html';
   const allowed = rootFiles.has(p) || p.startsWith('/assets/') || p.startsWith('/tools/');
@@ -31,7 +37,7 @@ const server = http.createServer((req, res) => {
   }
   fs.readFile(file, (err, data) => {
     if (err) { return send404(res); }
-    res.writeHead(200, { 'Content-Type': types[path.extname(file)] });
+    res.writeHead(200, { 'Content-Type': types[path.extname(file)], 'Cache-Control': p.startsWith('/assets/') ? 'public, max-age=86400' : 'public, max-age=3600' });
     res.end(data);
   });
 });

@@ -144,7 +144,7 @@
   /* Service-card "Select Service & Book": pre-fill the Become a Client
      form, scroll to it, and focus the name field. */
   Array.prototype.forEach.call(document.querySelectorAll('.service-book'),function(btn){
-    btn.addEventListener('click',function(){
+    btn.addEventListener('click',function(e){ if(e)e.preventDefault();
       var service=btn.getAttribute('data-service')||'';
       var note=btn.getAttribute('data-note')||'';
       var sel=document.getElementById('service');
@@ -155,10 +155,8 @@
         }
         if(!found&&sel.options.length)sel.selectedIndex=0;
       }
-      if(note){
-        var msg=document.getElementById('msg');
-        if(msg)msg.value=note;
-      }
+      var msg=document.getElementById('msg');
+      if(msg)msg.value=note||'';
       var start=document.getElementById('start');
       if(start)start.scrollIntoView({behavior:'smooth'});
       var name=document.getElementById('name');

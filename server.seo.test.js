@@ -42,14 +42,14 @@ const PAGES = [
   { path: '/', title: 'Lexurious Taxes — Less Taxes, More Returns in 2027 | Alexis Bryant | Atlanta Tax Preparation', h1: 'Less Taxes,', canonical: 'https://lextax.co/' },
   { path: '/tools', title: 'Free Tax Tools — Refund Estimator, Deduction Finder & More | Lexurious Taxes', h1: 'Free Tax Tools', canonical: 'https://lextax.co/tools' },
   { path: '/tools/refund-estimator', title: 'Free Refund Estimator — Less Taxes, More Returns in 2027 | Lexurious Taxes', h1: 'Refund Estimator', canonical: 'https://lextax.co/tools/refund-estimator' },
-  { path: '/tools/gig-deduction-finder', title: 'Gig Worker Deduction Finder — Lyft, Uber, DoorDash | Lexurious Taxes Atlanta', h1: 'Gig-Worker Deduction Finder', canonical: 'https://lextax.co/tools/gig-deduction-finder' },
+  { path: '/tools/business-deduction-finder', title: 'Business Deduction Finder — Rideshare, Delivery, Freelance | Lexurious Taxes Atlanta', h1: 'Business Deduction Finder', canonical: 'https://lextax.co/tools/business-deduction-finder' },
   { path: '/tools/do-i-need-to-file', title: 'Do I Need to File Taxes? Free Checker | Lexurious Taxes Atlanta', h1: 'Do I Need to File?', canonical: 'https://lextax.co/tools/do-i-need-to-file' },
   { path: '/tools/ready-to-file-checklist', title: 'Ready to File Checklist — 13 Items | Lexurious Taxes Atlanta', h1: 'Ready to File Checklist', canonical: 'https://lextax.co/tools/ready-to-file-checklist' },
 ];
 
 const TOOL_APPS = {
   '/tools/refund-estimator': 'Refund Estimator',
-  '/tools/gig-deduction-finder': 'Gig Worker Deduction Finder',
+  '/tools/business-deduction-finder': 'Business Deduction Finder',
   '/tools/do-i-need-to-file': 'Do I Need to File?',
   '/tools/ready-to-file-checklist': 'Ready to File Checklist',
 };
@@ -129,7 +129,7 @@ test('sitemap: 6 public URLs, lastmod 2026-11-17, nothing backstage', async () =
   assert.equal(r.status, 200);
   const locs = [...r.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   assert.equal(locs.length, 6);
-  for (const p of ['/', '/tools', '/tools/refund-estimator', '/tools/gig-deduction-finder', '/tools/do-i-need-to-file', '/tools/ready-to-file-checklist']) {
+  for (const p of ['/', '/tools', '/tools/refund-estimator', '/tools/business-deduction-finder', '/tools/do-i-need-to-file', '/tools/ready-to-file-checklist']) {
     assert.ok(locs.includes(`https://lextax.co${p}`), `sitemap has ${p}`);
   }
   assert.ok(!/<lastmod>2026-11-14/.test(r.body), 'no stale lastmod');
@@ -150,6 +150,12 @@ test('404: branded page, noindex, 404 status', async () => {
   assert.ok(r.body.includes('That page isn\'t here.'));
   assert.ok(r.body.includes('noindex, nofollow'));
   assert.ok(r.body.includes('href="/"'), '404 links home');
+});
+
+test('old gig tool URL redirects to the new Business Deduction Finder URL', async () => {
+  const r = await get('/tools/gig-deduction-finder');
+  assert.equal(r.status, 301);
+  assert.equal(r.headers.location, '/tools/business-deduction-finder');
 });
 
 test('source files are not served', async () => {
